@@ -1,0 +1,11 @@
+/* style.css */
+body { font-family: sans-serif; margin:0; background:#2f3136; color:white; }
+.container { display:flex; height:100vh; }
+.sidebar { width:200px; background:#202225; padding:10px; }
+.sidebar ul { list-style:none; padding:0; }
+.sidebar li { padding:8px; cursor:pointer; }
+.sidebar li:hover { background:#36393f; }
+.chat { flex:1; display:flex; flex-direction:column; }
+#messages { flex:1; padding:10px; overflow-y:auto; }
+#msgInput { width:calc(100% - 90px); padding:8px; }
+#sendBtn { width:80px; }
