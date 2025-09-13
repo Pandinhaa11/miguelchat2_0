@@ -1,28 +1,34 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
-<title>Mini Discord</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Discord</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-  <div class="sidebar">
-    <h3>Canais</h3>
-    <ul id="channelList">
-      <li data-canal="geral">#geral</li>
-      <li data-canal="jogos">#jogos</li>
-      <li data-canal="memes">#memes</li>
-    </ul>
+  <div class="app">
+    <!-- Sidebar canais -->
+    <div class="sidebar">
+      <h2>Servidores</h2>
+      <ul id="channelList">
+        <li data-canal="geral"># geral</li>
+        <li data-canal="jogos"># jogos</li>
+        <li data-canal="memes"># memes</li>
+      </ul>
+    </div>
+
+    <!-- Chat -->
+    <div class="chat">
+      <header id="chatHeader">Canal: #geral</header>
+      <div id="messages" class="messages"></div>
+      <div class="inputBox">
+        <input type="text" id="msgInput" placeholder="Digite sua mensagem...">
+        <button id="sendBtn">Enviar</button>
+      </div>
+    </div>
   </div>
-  <div class="chat">
-    <div id="messages"></div>
-    <input type="text" id="msgInput" placeholder="Digite sua mensagem...">
-    <button id="sendBtn">Enviar</button>
-  </div>
-</div>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
