@@ -2,27 +2,24 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Discord</title>
+  <title>Chat - Mini Discord</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <div class="sidebar">
+  <div class="chat-container">
+    <div class="channels">
       <h2>Canais</h2>
-      <ul id="channelList">
-        <li data-canal="geral"># geral</li>
-        <li data-canal="jogos"># jogos</li>
-        <li data-canal="memes"># memes</li>
+      <ul id="channel-list">
+        <li onclick="selectChannel('geral')"># geral</li>
+        <li onclick="selectChannel('games')"># games</li>
+        <li onclick="selectChannel('música')"># música</li>
       </ul>
     </div>
     <div class="chat">
-      <header id="chatHeader">Canal: #geral</header>
-      <div id="messages" class="messages"></div>
-      <div class="inputBox">
-        <input type="text" id="msgInput" placeholder="Digite sua mensagem...">
-        <button id="sendBtn">Enviar</button>
-      </div>
+      <h2 id="channel-title"># geral</h2>
+      <div id="messages"></div>
+      <input type="text" id="msg-input" placeholder="Escreva uma mensagem...">
+      <button onclick="sendMessage()">Enviar</button>
     </div>
   </div>
   <script src="script.js"></script>
