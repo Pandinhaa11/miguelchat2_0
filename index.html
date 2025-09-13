@@ -3,32 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Discord</title>
+  <title>Login - Mini Discord</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <!-- Sidebar canais -->
-    <div class="sidebar">
-      <h2>Servidores</h2>
-      <ul id="channelList">
-        <li data-canal="geral"># geral</li>
-        <li data-canal="jogos"># jogos</li>
-        <li data-canal="memes"># memes</li>
-      </ul>
+  <div class="login-container">
+    <h1>Mini Discord</h1>
+    <input type="text" id="username" placeholder="Digite seu nome...">
+    <div class="buttons">
+      <button id="loginBtn">Entrar</button>
+      <button id="registerBtn">Registrar</button>
     </div>
-
-    <!-- Chat -->
-    <div class="chat">
-      <header id="chatHeader">Canal: #geral</header>
-      <div id="messages" class="messages"></div>
-      <div class="inputBox">
-        <input type="text" id="msgInput" placeholder="Digite sua mensagem...">
-        <button id="sendBtn">Enviar</button>
-      </div>
-    </div>
+    <p id="statusMsg"></p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const usernameInput = document.getElementById("username");
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const statusMsg = document.getElementById("statusMsg");
+
+    // "Banco" de usuários fake só no localStorage
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    registerBtn.addEventListener("click", () => {
+      const name = usernameInput.value.trim();
+      if (!name) return statusMsg.textContent = "Digite um nome!";
+      if (users.includes(name)) {
+        statusMsg.textContent = "Usuário já existe!";
+      } else {
+        users.push(name);
+        localStorage.setItem("users", JSON.stringify(users));
+        statusMsg.textContent = "Registrado com sucesso!";
+      }
+    });
+
+    loginBtn.addEventListener("click", () => {
+      const name = usernameInput.value.trim();
+      if (!name) return statusMsg.textContent = "Digite um nome!";
+      if (!users.includes(name)) {
+        statusMsg.textContent = "Usuário não encontrado, registre-se!";
+      } else {
+        localStorage.setItem("currentUser", name);
+        window.location.href = "chat.html"; // vai pro chat
+      }
+    });
+  </script>
 </body>
 </html>

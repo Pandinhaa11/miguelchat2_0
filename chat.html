@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Discord</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar">
+      <h2>Canais</h2>
+      <ul id="channelList">
+        <li data-canal="geral"># geral</li>
+        <li data-canal="jogos"># jogos</li>
+        <li data-canal="memes"># memes</li>
+      </ul>
+    </div>
+    <div class="chat">
+      <header id="chatHeader">Canal: #geral</header>
+      <div id="messages" class="messages"></div>
+      <div class="inputBox">
+        <input type="text" id="msgInput" placeholder="Digite sua mensagem...">
+        <button id="sendBtn">Enviar</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

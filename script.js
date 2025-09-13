@@ -1,5 +1,7 @@
-const ws = new WebSocket("ws://localhost:8080");
+const ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host);
 let canalAtual = "geral";
+
+const usuario = localStorage.getItem("currentUser") || "Anônimo";
 
 const messagesDiv = document.getElementById("messages");
 const msgInput = document.getElementById("msgInput");
@@ -19,7 +21,7 @@ channelList.addEventListener("click", e => {
 // Enviar mensagem
 sendBtn.addEventListener("click", () => {
   if(msgInput.value.trim() === "") return;
-  const msg = { canal: canalAtual, usuario: "Você", texto: msgInput.value };
+  const msg = { canal: canalAtual, usuario, texto: msgInput.value };
   ws.send(JSON.stringify(msg));
   msgInput.value = "";
 });
@@ -32,7 +34,6 @@ ws.onmessage = event => {
   }
 };
 
-// Função pra montar mensagem bonitinha
 function addMessage(usuario, texto) {
   const div = document.createElement("div");
   div.className = "message";
